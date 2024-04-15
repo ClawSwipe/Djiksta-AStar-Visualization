@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Dijkstra's algorithm In Action">
+  <meta name="author" content="fast">
+
+
+  <title>Comparison of Djikstra and A* Pathfinding Algorithms</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="style/SmokingSStyle.css" rel="stylesheet">
+</head>
+
+<body class="container bg-dark">
+
+  <div class="container">
+
+    <div class="masthead">
+      <h3 class="text-muted ">Comparison of Djikstra and A* Pathfinding Algorithms</h3>
+
+      <nav class="navbar navbar-expand-md navbar-light mb-10">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-info" id="navbarCollapse">
+          <ul class="navbar-nav text-md-center nav-justified w-100">
+            <li class="nav-item active">
+              <a class="nav-link" href="indexfinal.html" id="projectname">Graph Theory Project
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+
+              <button type="button" class="btn btn-primary bg-secondary" data-toggle="modal" data-target="#exampleModal"
+                id="madeby">Made
+                By</button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="formd">
+                        <div class="form-group">
+                          <h3 class="bg-danger">21K-3153</h3>
+                          <h3 class="bg-info">21K-3372</h3>
+                          <h3 class="bg-success">21K-4529</h3>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="https://youtu.be/dQw4w9WgXcQ?si=IVWWDoxBuBv0QAij" target="_blank"
+                id="rick">Don't click
+                this!!</a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-light bg-dark">What is this?</h1>
+      <p class="lead text-light bg-dark">Dijkstra's algorithm is an algorithm for finding the shortest paths between
+        nodes in a graph,
+        which may represent,
+        for example, road networks. It was originally meant to find the shortest distance between two nodes, but other
+        variants include producing a mininum spanning tree.
+      </p>
+      <p class="lead text-light bg-dark">A* (pronounced as "A star") is a computer algorithm that is widely used in
+        pathfinding and graph
+        traversal. The algorithm efficiently plots a walkable path between multiple nodes, or points, on the graph.
+        A* is an extension of Dijkstra's algorithm with some characteristics of breadth-first search
+        (BFS).
+        This project is meant to show how long both Djikstra and A* pathfinding algorithms take to find the shortest
+        distance
+        between 2 nodes, on any graph made by you.
+      </p>
+      <p>
+        <a class="btn btn-lg btn-success" href="https://youtu.be/EFg3u_E6eHU?si=FTXmH5S5isLmky38" target="_blank"
+          role="button">Watch an
+          excellent video
+          about Dijkstra's Algorithm
+        </a>
+        <a class="btn btn-lg btn-danger" href="https://youtu.be/A60q6dcoCjw?si=P8wcHS1_JbvxZQZl" target="_blank"
+          role="button">Watch an
+          excellent video
+          about A* Algorithm</a>
+
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="text-success bg-dark">Go ahead</h1>
+        <p class="lead text-light bg-dark"> Click to add nodes. Drag to reposition nodes. Right click on a node to
+          start an edge. Right
+          click on
+          another node to complete the edge.
+          Drag nodes to adjust the weight of the edge. Select your start and end nodes. Click the buttons to see the
+          shortest path.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- Main Map Canvas -->
+    <div class="row">
+      <div class="col-lg-12">
+        <form>
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <label class="mr-sm-2 text-light bg-dark font-weight-bold h4" for="from">From</label>
+              <select id="from-starting" class="custom-select mb-2 mr-sm-2 mb-sm-0"></select>
+            </div>
+            <div class="col-auto">
+              <label class="mr-sm-2 text-light bg-dark font-weight-bold h4" for="to">To</label>
+              <select id="to-end" class="custom-select mb-2 mr-sm-2 mb-sm-0"></select>
+            </div>
+            <div class="col-auto">
+              <button type="button" id="clearmap" class="btn btn-danger">Clear Map</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" id="getshortestroute" class="btn btn-success"
+                title="find shortest path between nodes D"> Djikstra</button>
+            </div>
+            <div class="col-auto two">
+              <div class="time" id="timeone">
+                <h1 id="Dijkstratime">0:00:00</h1>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="button" id="getAstar" class="btn btn-success" title="find shortest path between nodes A">
+                A*</button>
+            </div>
+            <div class="col-auto two">
+              <div class="time" id="timetwo">
+                <h1 id="A*time">0:00:00</h1>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="button" id="getmindis" class="btn btn-primary"
+                title="find minimum distance between 2 non adjacent vertices">
+                Find mininum distance between 2 non adjacent vertices</button>
+            </div>
+            <div class="card text-center col-auto bg-dark">
+              <div class="card-body bg-dark text-success " style="height: 4rem;" id="cardtime">
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="custom-file">
+                <input type="file" id="data-import" class="custom-file-input">
+                <span class="custom-file-control">Import Data</span>
+              </label>
+            </div>
+            <!-- <div class="col-auto">
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Load Examples</label>
+              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="setexample">
+                <option value="0">Ex:</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div> -->
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="svg-map" class="card bg-secondary">
+        </div>
+        <form style="margin-top:5px;">
+          <div class="form-row align-items-center">
+
+            <div class="col-auto">
+              <button type="button" class="btn btn-success" id="data-export"> Export Data</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Site footer -->
+    <footer class="footer">
+      <p> Damn son where'd you find this
+      </p>
+    </footer>
+
+  </div>
+  <!-- /container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/d3.v3.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>
